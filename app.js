@@ -2,7 +2,7 @@
 // this will check if we have a user and set signout link if it exists
 import './auth/user.js';
 // Part A: import create todo
-import { createTodo } from './fetch-utils.js';
+import { createTodo, deleteAllTodos } from './fetch-utils.js';
 // Part B: import get todos
 import { getTodos } from './fetch-utils.js';
 // Part C: import complete todos
@@ -63,14 +63,14 @@ addTodoForm.addEventListener('submit', async (e) => {
 
 removeButton.addEventListener('click', async () => {
     // > Part D: Call the async supabase function to delete all todos
-    const response = null; // change me
+    const response = await deleteAllTodos(); // change me
     error = response.error;
 
     if (error) {
         displayError();
     } else {
         // > Part D: reset todos state to an empty array:
-
+        todos = [];
         displayTodos();
     }
 });
